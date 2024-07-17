@@ -1,7 +1,9 @@
-import { useExtension } from "@/contexts/extension-context";
-import { Collapsible } from "./ui/collapsible";
+import { Collapsible, CollapsibleContent } from "./ui/collapsible";
 import { useEffect } from "react";
 import { getVideoData } from "@/utils/functions";
+import ExtensionActions from "./extension-actions";
+import ExtensionPanels from "./extension-panels";
+import { useExtension } from "@/contexts/extension-context";
 
 export default function Extension() {
 
@@ -26,11 +28,10 @@ export default function Extension() {
         const fetchVideoData = async () => {
             const videoId = getVideoId();
 
-            if(videoId && videoId !== extensionVideoId){
+            if (videoId && videoId !== extensionVideoId) {
                 setExtensionVideoId(videoId);
                 setExtensionLoading(true);
                 const data = await getVideoData(videoId);
-                console.log("Data: ", data);
                 setExtensionData(data);
                 setExtensionLoading(false);
             }
@@ -50,24 +51,31 @@ export default function Extension() {
         }
 
         const backgroundColor = getCssVariable("--yt-spec-base-background");
-        console.log("Fetched Theme: ", backgroundColor);
 
-        if(backgroundColor === "#fff"){
+        if (backgroundColor === "#fff") {
             setExtensionTheme("light");
         }
-        else{
+        else {
             setExtensionTheme("dark");
         }
 
     }, [])
 
-    if(!extensionTheme) return null;
+    if (!extensionTheme) return null;
 
     return (
-        <main className={"antialiased w-full mb-3 z-10"}>
+        <main
+            ref={setExtensionContainer}
+            className={`antialiased w-full mb-3 z-10 ${extensionTheme}`}>
             <div className="w-full">
-                <Collapsible className="space-y-3">
-                    <h1 className="text-red-600">Extension Actions</h1>
+                <Collapsible
+                    open={extensionIsOpen}
+                    onOpenChange={setExtensionIsOpen}
+                    className="space-y-3">
+                    <ExtensionActions />
+                    <CollapsibleContent className={`w-full h-fit max-h-[500px] border border-zinc-200 rounded-md overflow-auto dark:bg-[#0f0f0f] dark:text-white`}>
+                        <ExtensionPanels />
+                    </CollapsibleContent>
                 </Collapsible>
             </div>
         </main>

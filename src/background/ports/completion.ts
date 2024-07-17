@@ -1,4 +1,5 @@
 import type { PlasmoMessaging } from "@plasmohq/messaging"
+import { error } from "console"
 import {OpenAI} from "openai"
 
 const llm = new OpenAI({

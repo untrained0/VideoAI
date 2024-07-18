@@ -44,11 +44,6 @@ export function SummaryProvider({ children }: SummaryProviderProps) {
 
   const { extensionData, extensionLoading } = useExtension()
 
-  // console.log("Prompt content: ", summaryPrompt.content);
-  // console.log("Model content: ", summaryModel.content);
-  // console.log("extension Data: ", extensionData);
-  
-
   async function generateSummary(e: any) {
     e.preventDefault()
 
@@ -79,10 +74,7 @@ export function SummaryProvider({ children }: SummaryProviderProps) {
     }
 
     setSummaryIsError(false)
-  }, [port.data?.message])
-
-  console.log(port.data?.error);
-  
+  }, [port.data?.message])  
 
   useEffect(() => {
     if (port.data?.error !== undefined && port.data?.error !== null) {

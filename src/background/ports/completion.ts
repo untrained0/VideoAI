@@ -31,9 +31,7 @@ async function createCompletion(model: string, prompt: string, context: any) {
 const handler: PlasmoMessaging.PortHandler = async (req, res) => {
   let cumulativeData = ""
 
-  const prompt = req.body.prompt
-  console.log("prompt: ", req.body.prompt);
-  
+  const prompt = req.body.prompt  
   const model = req.body.model
   const context = req.body.context
 

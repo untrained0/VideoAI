@@ -37,7 +37,7 @@ export default function SummaryActions() {
     <div className="flex flex-row w-full justify-between items-center sticky top-0 z-20 bg-white pt-3.5 pb-2 px-3">
       <Select
         value={summaryModel.value}
-        onValueChange={(value) =>
+        onValueChange={(value: string) =>
           setSummaryModel(models.find((model) => model.value === value))
         }>
         <SelectTrigger className="w-fit space-x-3">
@@ -82,7 +82,7 @@ export default function SummaryActions() {
 
         <Select
           value={summaryPrompt.value}
-          onValueChange={(value) =>
+          onValueChange={(value: string) =>
             setSummaryPrompt(prompts.find((prompt) => prompt.value === value))
           }>
           <SelectTrigger className="w-fit space-x-3">

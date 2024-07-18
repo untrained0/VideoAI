@@ -1,42 +1,40 @@
 import Extension from "@/components/extension"
-import type { PlasmoCSConfig, PlasmoGetInlineAnchor, PlasmoGetShadowHostId } from "plasmo"
+import Providers from "@/components/provider"
 import cssText from "data-text:~style.css"
-import Provider from "@/components/provider"
+import type { PlasmoCSConfig, PlasmoGetInlineAnchor } from "plasmo"
 
-const INJECT_ELEMENT_ID = "#secondary-inner.style-scope.ytd-watch-grid"
-
-export const config: PlasmoCSConfig = {
-  matches: ["https://www.youtube.com/*"]
-}
+const INJECTED_ELEMENT_ID = "#secondary.style-scope.ytd-watch-flexy"
 
 export const getStyle = () => {
   const baseFontSize = 12
-  let updatedCssText = cssText.replaceAll("root", ":host(plasmo-csui)")
+  let updatedCssText = cssText.replaceAll(":root", ":host(plasmo-csui)")
   const remRegex = /([\d.]+)rem/g
   updatedCssText = updatedCssText.replace(remRegex, (match, remValue) => {
     const pixels = parseFloat(remValue) * baseFontSize
     return `${pixels}px`
   })
-
   const style = document.createElement("style")
   style.textContent = updatedCssText
   return style
 }
 
+export const config: PlasmoCSConfig = {
+  matches: ["https://www.youtube.com/*"]
+}
+
 export const getInlineAnchor: PlasmoGetInlineAnchor = async () => ({
-  element: document.querySelector(INJECT_ELEMENT_ID),
+  element: document.querySelector(INJECTED_ELEMENT_ID),
   insertPosition: "afterbegin"
 })
 
-export const getShadowHostId: PlasmoGetShadowHostId = () => `plasmo inline`
+export const getShadowHostId = () => "plasmo-inline"
 
-function PlasmoMaiinUI() {
-
+function PlasmoMainUI() {
   return (
-    <Provider>
+    <Providers>
       <Extension />
-    </Provider>
+    </Providers>
   )
 }
 
-export default PlasmoMaiinUI;
+export default PlasmoMainUI

@@ -29,12 +29,13 @@ export function TranscriptProvider({children}: TranscriptProviderProps){
     const {extensionLoading, extensionData} = useExtension();
 
     const transcriptJson = useMemo(() => {
-        if(!extensionLoading && extensionData && extensionData.transcript){
-            return cleanJsonTranscript(extensionData.transcript);
+        if(!extensionLoading && extensionData && extensionData.transcripts){
+            return cleanJsonTranscript(extensionData.transcripts);
         }
 
         return [];
     }, [extensionData, extensionLoading])
+
 
     const value = {
         transcriptSearch,

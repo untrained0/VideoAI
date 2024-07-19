@@ -28,13 +28,13 @@ export default function SummaryActions() {
     timeout: 2000
   })
 
-  function CopySummary() {
+  function copySummary() {
     if (isCopied || !summaryContent || summaryIsGenerating) return
     copyToClipboard(summaryContent)
   }
 
   return (
-    <div className="flex flex-row w-full justify-between items-center sticky top-0 z-20 bg-white pt-3.5 pb-2 px-3">
+    <div className="flex flex-row w-full justify-between items-center sticky top-0 z-20 bg-white pt-3.5 pb-2 px-3 dark:bg-[#0F0F0F] dark:text-white">
       <Select
         value={summaryModel.value}
         onValueChange={(value: string) =>
@@ -70,7 +70,7 @@ export default function SummaryActions() {
           <Button
             variant="outline"
             size="icon"
-            onClick={CopySummary}
+            onClick={copySummary}
             disabled={summaryIsGenerating}>
             {isCopied ? (
               <CheckIcon className="h-4.5 w-4.5 opacity-60" />

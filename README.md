@@ -1,24 +1,52 @@
-This is a [Plasmo extension](https://docs.plasmo.com/) project bootstrapped with [`plasmo init`](https://www.npmjs.com/package/plasmo).
+# YouTube AI - Chrome Extension
 
-## Getting Started
+A browser extension that uses AI to generate summaries from YouTube video transcripts.
 
-First, run the development server:
+## Overview
 
-```bash
-pnpm dev
-# or
-npm run dev
-```
+YouTube AI enhances your YouTube experience by providing AI-powered summaries and transcript analysis for any video. The extension extracts video transcripts and processes them using AI models to generate concise summaries, key points, and explanations of important concepts.
 
-Open your browser and load the appropriate development build. For example, if you are developing for the chrome browser, using manifest v3, use: `build/chrome-mv3-dev`.
+## Features
 
-You can start editing the popup by modifying `popup.tsx`. It should auto-update as you make changes. To add an options page, simply add a `options.tsx` file to the root of the project, with a react component default exported. Likewise to add a content page, add a `content.ts` file to the root of the project, importing some module and do some logic, then reload the extension on your browser.
+- **AI-Powered Video Summaries**: Generate concise summaries of YouTube videos
+- **Transcript Viewer**: Browse through the complete video transcript
+- **Search Functionality**: Search within video transcripts
+- **Multiple AI Models**: Choose between different AI models for summary generation
+- **Customizable Prompts**: Select from different prompt templates or create your own
+- **Copy to Clipboard**: Easily copy generated summaries
+- **Dark Mode Support**: Integrates with YouTube's dark mode
 
-For further guidance, [visit our Documentation](https://docs.plasmo.com/)
+## Technical Stack
 
-## Making production build
+- [Plasmo Framework](https://docs.plasmo.com/) for browser extension development
+- React and TypeScript
+- Tailwind CSS for styling
+- [Radix UI](https://www.radix-ui.com/) for accessible UI components
+- OpenAI API for summary generation
 
-Run the following:
+## Installation
+
+### Development Setup
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   pnpm install
+   # or
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   pnpm dev
+   # or
+   npm run dev
+   ```
+4. Load the extension in your browser:
+   - For Chrome: Go to `chrome://extensions/`
+   - Enable "Developer mode"
+   - Click "Load unpacked" and select the chrome-mv3-dev directory
+
+### Building for Production
 
 ```bash
 pnpm build
@@ -26,8 +54,34 @@ pnpm build
 npm run build
 ```
 
-This should create a production bundle for your extension, ready to be zipped and published to the stores.
+This creates a production bundle ready for submission to browser extension stores.
 
-## Submit to the webstores
+## Usage
 
-The easiest way to deploy your Plasmo extension is to use the built-in [bpp](https://bpp.browser.market) GitHub action. Prior to using this action however, make sure to build your extension and upload the first version to the store to establish the basic credentials. Then, simply follow [this setup instruction](https://docs.plasmo.com/framework/workflows/submit) and you should be on your way for automated submission!
+1. Navigate to any YouTube video
+2. Click on the extension icon to open the panel
+3. Select your preferred AI model and prompt
+4. Click "Generate Summary" to analyze the video
+5. View and interact with the generated summary
+6. Use the transcript viewer to search through the video content
+7. Copy the summary to your clipboard for use elsewhere
+
+## Configuration
+
+The extension provides several options to customize your experience:
+
+- Choose between different AI models for varying levels of detail
+- Select from pre-defined prompt templates for different summary styles
+- Toggle between light and dark modes for comfortable viewing
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+MIT
+
+---
+
+This project was bootstrapped with [Plasmo](https://docs.plasmo.com/), a browser extension development framework.

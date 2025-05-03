@@ -24,9 +24,6 @@ export default function TranscriptActions({jumpToCurrentTime}: TranscriptActionP
       console.log("transcript JSON:", transcriptJson);
       console.log("extenion loading: ", extensionLoading);
       
-      
-      
-
       function copyTranscript(){
         if(isCopied && extensionData.transcripts) return;
         const processed = cleanTextTranscript(extensionData.transcripts);

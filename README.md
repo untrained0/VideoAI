@@ -35,13 +35,14 @@ YouTube AI enhances your YouTube experience by providing AI-powered summaries an
    # or
    npm install
    ```
-3. Start the development server:
+3. Copy `.env.example` to `.env` and set `PLASMO_PUBLIC_OPENAI_API_KEY` to your OpenAI API key
+4. Start the development server:
    ```bash
    pnpm dev
    # or
    npm run dev
    ```
-4. Load the extension in your browser:
+5. Load the extension in your browser:
    - For Chrome: Go to `chrome://extensions/`
    - Enable "Developer mode"
    - Click "Load unpacked" and select the chrome-mv3-dev directory

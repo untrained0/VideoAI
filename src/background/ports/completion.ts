@@ -4,7 +4,7 @@ import { OpenAI } from "openai"
 import type { PlasmoMessaging } from "@plasmohq/messaging"
 
 const llm = new OpenAI({
-  apiKey: "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"
+  apiKey: process.env.PLASMO_PUBLIC_OPENAI_API_KEY
 })
 
 async function createCompletion(model: string, prompt: string, context: any) {
